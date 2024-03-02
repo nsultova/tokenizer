@@ -43,11 +43,12 @@
           '';
         };
         get_corpus = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [ poppler_utils wget ];
+          nativeBuildInputs = with pkgs; [
+            lynx
+            #poppler_utils wget
+          ];
           shellHook = ''
-            wget -O /tmp/Leseblätter_EinsternsSchwesterBayern.pdf https://fraulocke-grundschultante.de/material/Lesebl%C3%A4tter_EinsternsSchwesterBayern.pdf
-            pdftotext /tmp/Leseblätter_EinsternsSchwesterBayern.pdf
-            strings /tmp/Leseblätter_EinsternsSchwesterBayern.txt > example/corpus.txt
+            lynx --display_charset=utf-8 --dump https://nixos.org/manual/nixos/stable/index.html#ch-installation > example/corpus.txt
           '';
         };
       };
