@@ -26,7 +26,7 @@ class Tokenizer():
             self.tokens[idx] = sym
 
         ## nonterminal symbols / n-grams
-        for n in range(2,5+1):
+        for n in range(2,3+1):
             ngrams_all = [text[start:start+n] for start in range(len(text)-n)]
             ngrams_frequency_all = groupby_count(sorted(ngrams_all))
             ngrams_frequency = filter_by_count(ngrams_frequency_all)
@@ -60,11 +60,11 @@ def test_tokenizer():
 def test_completion():
     t = test_tokenizer()
     sentence = ""
-    context_len = 4
-    for i in range(1000):
+    context_len = 1
+    for i in range(10):
         context = sentence[-context_len:]
         completion = t.complete(context)
-        #print([i, sentence[:-context_len], context, completion], "\n")
+        print([i, sentence[:-context_len], context, completion], "\n")
         sentence = sentence[:-context_len] + completion
         if completion == context:
             context_len -= 1

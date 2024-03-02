@@ -1,3 +1,33 @@
+## Example
+
+```bash
+(cd src; python ./tokenize.py)
+```
+> {'corpus\_len': 180, 'token\_count': 43}
+>
+> [0, '', '', 'Bul'] 
+>
+> [1, 'B', 'ul', 'ull'] 
+>
+> [2, 'B', 'ull', 'ull'] 
+>
+> [3, 'Bu', 'll', 'lls'] 
+>
+> [4, 'Bu', 'lls', 'lls'] 
+>
+> [5, 'Bul', 'ls', 'lsh'] 
+>
+> [6, 'Bul', 'lsh', 'lsh'] 
+>
+> [7, 'Bull', 'sh', 'shi'] 
+>
+> [8, 'Bull', 'shi', 'shi'] 
+>
+> [9, 'Bulls', 'hi', 'hit'] 
+>
+> Bullshit
+
+
 ## About
 Main model to the state interpretems the original on and the word presentially observable for the statement neural network is designed to system of the statements and represented to the neural network instructions, such as a research can in the original on the collection of bullshitting the a Markov decision.
 
