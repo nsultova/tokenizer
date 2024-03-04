@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import itertools
@@ -72,4 +73,6 @@ def test_completion():
             context_len += random.randint(0, 1)
     return sentence
 
-print(test_completion())
+
+if __name__ == '__main__':
+    print(test_completion())
