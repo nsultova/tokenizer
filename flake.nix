@@ -20,7 +20,8 @@
             ipython jupyter spyder qtconsole
             numpy matplotlib
             pandas plotly ipywidgets notebook
-            scipy keras tensorflow dm-tree transformers
+            scipy keras #tensorflow dm-tree
+            torch numpy transformers datasets torchvision tiktoken wandb tqdm
             scikit-image urllib3 scikit-learn
             opencv4
             sympy
@@ -51,7 +52,8 @@
           ];
           shellHook = ''
             mkdir example
-            lynx --display_charset=utf-8 --dump https://nixos.org/manual/nixos/stable/index.html#ch-installation > example/corpus.txt
+            wget https://www.gutenberg.org/cache/epub/2229/pg2229.txt -O example/corpus.txt
+            #lynx --display_charset=utf-8 --dump https://nixos.org/manual/nixos/stable/index.html#ch-installation > example/corpus.txt
           '';
         };
       };
