@@ -35,7 +35,7 @@ import joblib
 #joblib.dump({"d_corpus": d_corpus}, "/home/j03/Documents/src/py/lm/tokenize/d_corpus"+suffix)
 
 print("load corpus…")
-d_corpus = joblib.load("../tokenize/d_corpus"+suffix)["d_corpus"]
+d_corpus = joblib.load("../d_corpus"+suffix)["d_corpus"]
 def most_similar(vec: np.ndarray, k=10):
     dst = np.dot(list(d_corpus.values()), vec) / np.linalg.norm(list(d_corpus.values()), axis=1) / np.linalg.norm(vec)
     indexes = np.argsort(-dst)

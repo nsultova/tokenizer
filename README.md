@@ -1,7 +1,7 @@
 ## Example
 
 ```bash
-(cd src; python ./tokenize.py)
+(cd src; python ./python tokenizer/trivial.py)
 ```
 > {'corpus\_len': 180, 'token\_count': 43}
 >

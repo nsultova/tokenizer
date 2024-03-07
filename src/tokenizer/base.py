@@ -16,27 +16,8 @@ class Tokenizer():
     tokens = {}  ## idx -> token
     tokens_frequency = {}  ## token -> count
     
-    def train(self, text):
-        
-        ## terminal symbols / monograms
-        symbols_frequency = groupby_count(sorted(text))
-        for sym, count in symbols_frequency:
-            self.tokens_frequency[sym] = count
-        symbols = [x[0] for x in symbols_frequency]
-        for idx, sym in enumerate(symbols):
-            self.tokens[idx] = sym
-
-        ## nonterminal symbols / n-grams
-        for n in range(2,3+1):
-            ngrams_all = [text[start:start+n] for start in range(len(text)-n)]
-            ngrams_frequency_all = groupby_count(sorted(ngrams_all))
-            ngrams_frequency = filter_by_count(ngrams_frequency_all)
-            for ngram, count in ngrams_frequency:
-                self.tokens_frequency[ngram] = count
-            idx_offset = len(self.tokens)
-            ngrams = [x[0] for x in ngrams_frequency]
-            for idx, ngram in enumerate(ngrams):
-                self.tokens[idx_offset+idx] = ngram
+    def train(self, corpus):
+        pass
 
     def stats(self, merged = {}):
         merged.update({"token_count": len(self.tokens)})
@@ -51,28 +32,26 @@ class Tokenizer():
             return random.choices(matches, weights=weights)[0][0]
         return context
 
-def test_tokenizer():
+def test_tokenizer(tokenizer):
     corpus = open("../example/corpus.txt").read()
-    t = Tokenizer()
+    t = tokenizer()
     t.train(corpus)
     print(t.stats({"corpus_len": len(corpus)}))
     return t
 
-def test_completion():
-    t = test_tokenizer()
-    sentence = ""
+def test_completion(tokenizer, sentence="", length=10000, debug=True):
+    t = test_tokenizer(tokenizer)
     context_len = 1
-    for i in range(10):
+    for i in range(length):
         context = sentence[-context_len:]
         completion = t.complete(context)
-        print([i, sentence[:-context_len], context, completion], "\n")
+        if debug:
+            print([i, sentence[:-context_len], context, completion], "\n")
+        else:
+            print(completion[len(context):], end='', flush=True)
         sentence = sentence[:-context_len] + completion
         if completion == context:
             context_len -= 1
         else:
             context_len += random.randint(0, 1)
     return sentence
-
-
-if __name__ == '__main__':
-    print(test_completion())

@@ -136,15 +136,15 @@ model.compile(optimizer="adam", loss="mean_squared_error")
 model.summary()
 
 print("fit…")
-callbacks = [keras.callbacks.ModelCheckpoint(filepath="../../example/model.weights.h5",
+callbacks = [keras.callbacks.ModelCheckpoint(filepath="../example/model.weights.h5",
                                              save_weights_only=True,
                                              save_best_only=True,
                                              verbose=1)]
 
 history = model.fit(
-    x_train, y_train, epochs=10000, validation_data=(x_val, y_val), callbacks=callbacks
+    x_train, y_train, epochs=1000, validation_data=(x_val, y_val), callbacks=callbacks
 )
-model.save("../../example/model.keras", overwrite=True)
+model.save("../example/model.keras", overwrite=True)
 
 #y_pred = model.predict(x_train)
 for word in words[:train_size][:20]:
